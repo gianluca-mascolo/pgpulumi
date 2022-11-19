@@ -3,7 +3,9 @@ services:
     image: postgres:15
     restart: "no"
     environment:
-      POSTGRES_PASSWORD: "mysecretpw"
+      POSTGRES_PASSWORD: "admin"
+    ports:
+      - 5432:5432
   pgadmin:
     image: dpage/pgadmin4:6
     ports:
@@ -12,3 +14,8 @@ services:
       PGADMIN_DEFAULT_EMAIL: "admin@database.com"
       PGADMIN_DEFAULT_PASSWORD: "admin"
       PGADMIN_DISABLE_POSTFIX: "true"
+    volumes:
+      - type: bind
+        source: $PWD/servers.json
+        target: /pgadmin4/servers.json
+        read_only: true
