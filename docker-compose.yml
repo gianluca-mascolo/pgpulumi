@@ -1,0 +1,6 @@
+services:
+  database:
+    image: postgres:15
+    restart: never
+    environment:
+      POSTGRES_PASSWORD: mysecretpw
