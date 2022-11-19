@@ -1,6 +1,14 @@
 services:
   database:
     image: postgres:15
-    restart: never
+    restart: "no"
     environment:
-      POSTGRES_PASSWORD: mysecretpw
+      POSTGRES_PASSWORD: "mysecretpw"
+  pgadmin:
+    image: dpage/pgadmin4:6
+    ports:
+      - 8080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@database.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+      PGADMIN_DISABLE_POSTFIX: "true"
