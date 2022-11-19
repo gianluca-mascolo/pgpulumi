@@ -1,0 +1,7 @@
+config:
+  postgresql:connect_timeout: 5
+  postgresql:host: localhost
+  postgresql:password:
+    secure: AAABAIC1fu7Qi6QWxkkKVEqbEfPx9XP0JQ+HCby1SjFFXoKo7g==
+  postgresql:sslmode: disable
+  postgresql:username: postgres
