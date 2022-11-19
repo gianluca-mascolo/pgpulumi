@@ -151,6 +151,19 @@ pulumi = ">=3.0.0,<4.0.0"
 semver = ">=2.8.1"
 
 [[package]]
+name = "pulumi-random"
+version = "4.8.2"
+description = "A Pulumi package to safely use randomness in Pulumi programs."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+parver = ">=0.2.1"
+pulumi = ">=3.0.0,<4.0.0"
+semver = ">=2.8.1"
+
+[[package]]
 name = "py"
 version = "1.11.0"
 description = "library with cross-python path, ini-parsing, io, code, log facilities"
@@ -226,7 +239,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "9a1f7629a06c4b635cdfd26146be0546798e9e79f5ff4b258d1c834776fec73b"
+content-hash = "5f0f0c93ec91c1fb6a2eb544d6ca4baf25f17022415a05915fa5fd2cc27eaabd"
 
 [metadata.files]
 arpeggio = []
@@ -242,6 +255,7 @@ pluggy = []
 protobuf = []
 pulumi = []
 pulumi-postgresql = []
+pulumi-random = []
 py = []
 pyparsing = []
 pytest = []

@@ -5,3 +5,20 @@ config:
     secure: AAABAIC1fu7Qi6QWxkkKVEqbEfPx9XP0JQ+HCby1SjFFXoKo7g==
   postgresql:sslmode: disable
   postgresql:username: postgres
+  pgpulumi:databases:
+    - wonderfuldb
+    - sarchiapone
+  pgpulumi:groups:
+    - name: gruppone
+      users:
+        - ciccio
+        - pluto
+        - paperino
+      database:
+        - name: sarchiapone
+    - name: developers
+      users:
+        - foobar
+        - ciccio
+      database:
+        - name: wonderfuldb
