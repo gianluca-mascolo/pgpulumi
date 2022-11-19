@@ -1,24 +1,24 @@
 config:
-  postgresql:connect_timeout: 5
+  pgpulumi:databases:
+  - wonderfuldb
+  - sarchiapone
+  pgpulumi:groups:
+  - database:
+    - name: sarchiapone
+    name: gruppone
+    users:
+    - ciccio
+    - pluto
+    - paperino
+  - database:
+    - name: wonderfuldb
+    name: developers
+    users:
+    - foobar
+    - ciccio
+  postgresql:connect_timeout: "5"
   postgresql:host: localhost
   postgresql:password:
-    secure: AAABAIC1fu7Qi6QWxkkKVEqbEfPx9XP0JQ+HCby1SjFFXoKo7g==
+    secure: AAABAIPy/whs3g214ERu5cDI0Ap4GxFzWoJ2scy4JwybebrJvQ==
   postgresql:sslmode: disable
   postgresql:username: postgres
-  pgpulumi:databases:
-    - wonderfuldb
-    - sarchiapone
-  pgpulumi:groups:
-    - name: gruppone
-      users:
-        - ciccio
-        - pluto
-        - paperino
-      database:
-        - name: sarchiapone
-    - name: developers
-      users:
-        - foobar
-        - ciccio
-      database:
-        - name: wonderfuldb
