@@ -9,8 +9,8 @@ conf = pulumi.Config("pgpulumi")
 dblist = conf.require_object("databases")
 dbgroups = conf.require_object("groups")
 
-for db in dblist:
-    postgresql.Database(resource_name=db,name=db)
+# for db in dblist:
+#     postgresql.Database(resource_name=db,name=db)
 
 allusers=[]
 for g in dbgroups:
