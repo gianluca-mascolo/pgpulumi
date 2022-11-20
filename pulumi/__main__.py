@@ -8,9 +8,12 @@ from pulumi import Output
 conf = pulumi.Config("pgpulumi")
 dblist = conf.require_object("databases")
 dbgroups = conf.require_object("groups")
+debug = conf.get_bool("debug") or False
 
-# for db in dblist:
-#     postgresql.Database(resource_name=db,name=db)
+def write_to_file(u,p):
+    f = open("userlist.txt", "a")
+    f.write(f"{u}:{p}\n")
+    f.close()
 
 allusers=[]
 for g in dbgroups:
@@ -18,17 +21,7 @@ for g in dbgroups:
 allusers=set(allusers)
 
 for username in allusers:
-    userpassword=random.RandomPassword(f"{username}-password",length=20)
+    userpassword=random.RandomPassword(f"{username}-password",length=8,special=False)
     postgresql.Role(resource_name=f"{username}-role",name=username,login=True,password=userpassword.result)
-    #userpasswordoutput=userpassword.get(resource_name=f"{username}-password-output",id=f"{username}-password")
-    #random.RandomPassword.get(resource_name=f"{username}-password-output",id=f"{username}-password")
-    # userpasswordouput=str(Output.all(userpassword).apply(lambda result: f"{result}"))
-    # pulumi.export(
-    #     f"{username}-credentials",
-    #     f"{username}:{userpasswordouput}"
-    # )
-# for g in dbgroups:
-#     print(g["name"])
-#     print(g["users"][0])
-#     print(g["database"][0]["name"])
-
+    if debug:
+        Output.all(username,userpassword.result).apply(lambda args: write_to_file(u=args[0],p=args[1]))

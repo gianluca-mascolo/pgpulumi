@@ -138,6 +138,19 @@ semver = ">=2.8,<3.0"
 six = ">=1.12,<2.0"
 
 [[package]]
+name = "pulumi-command"
+version = "4.5.0"
+description = "The Pulumi Command Provider enables you to execute commands and scripts either locally or remotely as part of the Pulumi resource model."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+parver = ">=0.2.1"
+pulumi = ">=3.0.0,<4.0.0"
+semver = ">=2.8.1"
+
+[[package]]
 name = "pulumi-postgresql"
 version = "3.6.0"
 description = "A Pulumi package for creating and managing postgresql cloud resources."
@@ -239,7 +252,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "5f0f0c93ec91c1fb6a2eb544d6ca4baf25f17022415a05915fa5fd2cc27eaabd"
+content-hash = "2b355428363bb925cda9045d9222b1f1f8a8729c6bf2e0a7a2771118e3b75f76"
 
 [metadata.files]
 arpeggio = []
@@ -254,6 +267,7 @@ parver = []
 pluggy = []
 protobuf = []
 pulumi = []
+pulumi-command = []
 pulumi-postgresql = []
 pulumi-random = []
 py = []

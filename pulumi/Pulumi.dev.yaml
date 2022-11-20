@@ -2,6 +2,7 @@ config:
   pgpulumi:databases:
   - wonderfuldb
   - sarchiapone
+  pgpulumi:debug: True
   pgpulumi:groups:
   - database:
     - name: sarchiapone
