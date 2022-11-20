@@ -6,6 +6,11 @@ services:
       POSTGRES_PASSWORD: "admin"
     ports:
       - 5432:5432
+    volumes:
+      - type: bind
+        source: $PWD/initdb.sql
+        target: /docker-entrypoint-initdb.d/initdb.sql
+        read_only: true
   pgadmin:
     image: dpage/pgadmin4:6
     ports:
