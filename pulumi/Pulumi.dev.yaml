@@ -6,6 +6,9 @@ config:
   pgpulumi:groups:
   - database:
     - name: sarchiapone
+      privileges:
+        - SELECT
+        - CONNECT
     name: gruppone
     users:
     - ciccio
@@ -13,6 +16,17 @@ config:
     - paperino
   - database:
     - name: wonderfuldb
+      privileges:
+        - SELECT
+        - CONNECT
+        - USAGE
+    - name: sarchiapone
+      privileges:
+        - SELECT
+        - CONNECT
+        - UPDATE
+        - INSERT
+        - USAGE
     name: developers
     users:
     - foobar
