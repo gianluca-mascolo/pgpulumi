@@ -1,0 +1,1 @@
+pulumi import postgresql:index/role:Role pluto-role pluto
