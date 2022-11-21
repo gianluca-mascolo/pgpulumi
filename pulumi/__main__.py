@@ -16,12 +16,14 @@ def write_to_file(u,p):
     f.close()
 
 allusers=[]
-for g in dbgroups:
-    allusers.extend(g["users"])
+for group in dbgroups:
+    allusers.extend(group["users"])
+    postgresql.Role(resource_name=f"{group['name']}-group-role",name=group["name"],login=False)
 allusers=set(allusers)
 
 for username in allusers:
     userpassword=random.RandomPassword(f"{username}-password",length=8,special=False)
-    postgresql.Role(resource_name=f"{username}-role",name=username,login=True,password=userpassword.result)
+    userroles=[group["name"] for group in dbgroups if username in group["users"] ]
+    postgresql.Role(resource_name=f"{username}-role",name=username,login=True,password=userpassword.result,roles=userroles)
     if debug:
         Output.all(username,userpassword.result).apply(lambda args: write_to_file(u=args[0],p=args[1]))
