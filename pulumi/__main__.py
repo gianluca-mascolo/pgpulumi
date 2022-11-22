@@ -30,6 +30,10 @@ for group in dbgroups:
 
 allusers=set(allusers)
 
+if debug:
+    f = open("userlist.txt", "w")
+    f.close()
+
 for username in allusers:
     userpassword=random.RandomPassword(f"{username}-password",length=8,special=False)
     userroles=[group["name"] for group in dbgroups if username in group["users"] ]
