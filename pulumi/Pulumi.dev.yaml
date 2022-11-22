@@ -1,32 +1,26 @@
 config:
-  pgpulumi:databases:
-  - wonderfuldb
-  - sarchiapone
   pgpulumi:debug: True
+  pgpulumi:permissionsets:
+    readonly:
+      - SELECT
+    readwrite:
+      - SELECT
+      - UPDATE
+      - INSERT
   pgpulumi:groups:
-  - database:
+  - databases:
     - name: sarchiapone
-      privileges:
-        - SELECT
-        - CONNECT
+      privileges: readonly
     name: gruppone
     users:
     - ciccio
     - pluto
     - paperino
-  - database:
+  - databases:
     - name: wonderfuldb
-      privileges:
-        - SELECT
-        - CONNECT
-        - USAGE
+      privileges: readonly
     - name: sarchiapone
-      privileges:
-        - SELECT
-        - CONNECT
-        - UPDATE
-        - INSERT
-        - USAGE
+      privileges: readwrite
     name: developers
     users:
     - foobar

@@ -6,8 +6,8 @@ import pulumi_postgresql as postgresql
 import pulumi_random as random
 from pulumi import Output
 conf = pulumi.Config("pgpulumi")
-dblist = conf.require_object("databases")
 dbgroups = conf.require_object("groups")
+permissionsets = conf.require_object("permissionsets")
 debug = conf.get_bool("debug") or False
 
 def write_to_file(u,p):
@@ -19,6 +19,15 @@ allusers=[]
 for group in dbgroups:
     allusers.extend(group["users"])
     postgresql.Role(resource_name=f"{group['name']}-group-role",name=group["name"],login=False)
+    for db in group["databases"]:
+        privileges=permissionsets[db["privileges"]]
+        postgresql.Grant(
+            resource_name=f'{group["name"]}-{db["name"]}-{db["privileges"]}-privileges',database=db["name"],
+            object_type="table",
+            privileges=privileges,
+            role=group["name"],
+            schema="public")
+
 allusers=set(allusers)
 
 for username in allusers:
